@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Pencil Animation</title>
+  <style>
+    *{
+      box-sizing: border-box;
+      padding:0;
+      margin:0;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    body{
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    p{
+      text-align: center;
+      padding-top: 20px;
+    }
+    section{
+      width:fit-content;
+      height:auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      margin-top: 5vh;
+  
+    }
+    section img{
+     /* width:40px;*/
+      height:100px;
+      object-position: center;
+      object-fit: cover;
+      /*border:1px solid black;*/
+     
+    }
+    #ink{
+      display:none;
+      border: 2px solid black;
+      width:0;
+      margin-left:-60px;
+      margin-top: -4px;
+      border-radius: 4px;
+      
+    }
+   
+    .inkanimate{
+      animation: inks 1.5s ease-in-out infinite;
+    }
+    .pencilanimate{
+      animation: pencil_move 1.5s ease-in-out infinite;
+    }
+    @keyframes inks{
+      0%{
+        margin-right:0px;
+      }
+     
+      60%{
+        margin-right:-60px;
+        width:60px;
+      }
+      100%{
+        margin-right:0px;
+        width:0;
+      }
+    }
+    @keyframes pencil_move{
+     0% {
+       margin-right: 0px;
+     }
+    
+     60% {
+       margin-right: -120px;
+     }
+     100%{
+       margin-right:0%;
+     }
+    }
+  </style>
+</head>
+
+<body>
+  <p>Click the pencil!</p>
+  <section>
+    <img src="pencil.PNG" alt="" id="pencil">
+    <div id="ink"></div>
+  </section>
+
+  <script>
+    var start_pencil_anmt = document.querySelector('#pencil');
+    var start_ink_anmt = document.querySelector('#ink');
+  
+    let call = false;
+   start_pencil_anmt.addEventListener("click", function () {
+     call = !call;
+     
+     if(call){
+      
+      start_pencil_anmt.classList.add("pencilanimate");
+      start_ink_anmt.classList.add("inkanimate");
+      start_ink_anmt.style.display = "flex";
+     } else {
+
+       start_pencil_anmt.classList.remove("pencilanimate");
+       start_ink_anmt.classList.remove("inkanimate");
+      start_ink_anmt.style.display = "none";
+     }
+
+   });
+  </script>
+</body>
+</html>
